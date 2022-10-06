@@ -1,13 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/App.css";
 import Main from "./routes/Main";
 import Signup from "./routes/SignUp";
-import axios from "axios";
 
 function App() {
-  
-
   return (
     <>
       <BrowserRouter>
