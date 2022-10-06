@@ -1,3 +1,7 @@
+# 공간예약 플랫폼 개발
+
+대학교 강의실이나 카페 세미나실과 같이 공간을 예약관리하는 시스템
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
