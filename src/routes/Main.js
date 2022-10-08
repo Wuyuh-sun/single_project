@@ -1,8 +1,14 @@
-import style from "../styles/Main/main.module.css";
-import { Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect} from "react";
 import axios from "axios";
+import Background from "../components/Main/Background";
+import Login from "../components/Main/LoginBox";
+import { useSelector, useDispatch } from "react-redux";
+import { loginState } from "../store/modules/loginSlice";
+
 export default function Main() {
+  const loginState = useSelector((state) => state.login.value);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/test")
@@ -16,42 +22,10 @@ export default function Main() {
       .catch();
   }, []);
 
-  const id = useRef();
-  const password = useRef();
-
   return (
     <>
-      <div className={style.wrap}>
-        <h1>LOGIN</h1>
-        <form className={style.loginForm}>
-          <label htmlFor="ID">ID</label>
-          <input ref={id} type="text" id="ID" name="ID" />
-          <label htmlFor="PASSWORD">PASSWORD</label>
-          <input ref={password} type="password" id="PASSWORD" name="PASSWORD" />
-          <input
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              // console.log("id:" + id.current.value + " & password:" + password.current.value)
-              if (!id.current.value) {
-                alert("id를 입력하세요");
-              } else {
-                if(!password.current.value){
-                  alert("password를 입력하세요")
-                } else{
-                  
-                }
-              }
-            }}
-          />
-          <Link to="/signup">
-            <button>회원가입</button>
-          </Link>
-          <Link to="/adminSignup">
-            <button>관리자 회원가입</button>
-          </Link>
-        </form>
-      </div>
+      <Background></Background>
+      <Login></Login>
     </>
   );
 }

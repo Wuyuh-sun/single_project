@@ -1,8 +1,10 @@
+import Background from "../components/Main/Background";
 import style from "../styles/Main/signup.module.css";
 
 export default function SignUp() {
   return (
     <>
+    <Background/>
       <div className={style.wrap}>
         <h1>SIGNUP</h1>
         <form className={style.loginForm}>

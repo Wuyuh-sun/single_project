@@ -1,0 +1,65 @@
+.wrap{
+  /* border: 1px solid black; */
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 600px;
+  height: 750px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  z-index: 9999;
+  border-radius: 40px;
+}
+.wrap_center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 400px;
+  height: 580px;
+  /* border: 1px solid white; */
+  color: white;
+}
+.wrap_center h1{
+  font-size: 60px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+.loginForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 508px;
+  z-index: 9999;
+}
+.loginForm input, .loginForm button{
+  width: 400px;
+  height: 80px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+.formBox1 input{
+  font-size: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.formBox1 input#ID{
+  
+}
+.formBox1 input#PASSWORD{
+  
+}
+.formBox2 input{
+  background-color: #FF0066;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+}
+.formBox2 button{
+  background-color: #3FA9F5;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+}
