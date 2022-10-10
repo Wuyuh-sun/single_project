@@ -8,13 +8,14 @@ export const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    loginState:(state, action)=>{
+    loginStateFunc:(state, action)=>{
       state.value = action.payload;
-    }
+    }, 
+   
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { loginState } = loginSlice.actions;
+export const { loginStateFunc } = loginSlice.actions;
 
 export default loginSlice.reducer;

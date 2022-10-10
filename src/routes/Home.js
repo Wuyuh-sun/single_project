@@ -1,25 +1,22 @@
-import Background from "../components/Main/Background";
-import Login from "../components/Main/LoginBox";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 
-export default function Main() {
+export default function Home(){
   const loginValue = useSelector((state) => state.login.value);
-  const dispatch = useDispatch();
   let navigate = useNavigate();
-
+  
   useEffect(()=>{
     if(sessionStorage.userID !== undefined){
       navigate("/home");
-    } 
+    } else{
+      navigate("/");
+    }
   },[])
-  
-  return (
+
+  return(
     <>
-      <Background></Background>
-      <Login></Login>
+    <h1>Home</h1>
     </>
-  );
+  )
 }

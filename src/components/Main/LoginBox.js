@@ -1,10 +1,14 @@
+import axios from "axios";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "../../styles/Main/login.module.css";
 
 export default function Login() {
   const id = useRef();
   const password = useRef();
+
+  let navigate = useNavigate();
+
   return (
     <>
       <div className={style.wrap}>
@@ -18,7 +22,9 @@ export default function Login() {
                 id="ID"
                 name="ID"
                 placeholder="ID를 입력하세요"
+                autoComplete="none"
               />
+              <small>ID를 입력하세요</small>
               <input
                 ref={password}
                 type="password"
@@ -26,21 +32,57 @@ export default function Login() {
                 name="PASSWORD"
                 placeholder="PASSWORD를 입력하세요"
               />
+              <small>PASSWORD를 입력하세요</small>
             </div>
             <div className={style.formBox2}>
               <input
                 type="submit"
                 value="LOGIN"
-
                 onClick={(e) => {
                   e.preventDefault();
-                  // console.log("id:" + id.current.value + " & password:" + password.current.value)
+                  const small_1 = id.current.parentNode.childNodes[1];
+                  const small_2 = password.current.parentNode.childNodes[3];
                   if (!id.current.value) {
-                    alert("id를 입력하세요");
+                    if (!password.current.value) {
+                      small_1.innerText = "ID를 입력하세요";
+                      small_1.style.display = "block";
+                      small_2.innerText = "PASSWORD를 입력하세요";
+                      small_2.style.display = "block";
+                    } else {
+                      small_1.innerText = "ID를 입력하세요";
+                      small_1.style.display = "block";
+                      small_2.style.display = "none";
+                    }
                   } else {
                     if (!password.current.value) {
-                      alert("password를 입력하세요");
+                      small_1.style.display = "none";
+                      small_2.innerText = "PASSWORD를 입력하세요";
+                      small_2.style.display = "block";
                     } else {
+                      small_1.style.display = "none";
+                      small_2.style.display = "none";
+                      axios
+                        .get("http://localhost:4000/api/login", {
+                          params: {
+                            userid: id.current.value,
+                            userpw: password.current.value,
+                          },
+                        })
+                        .then((res) => {
+                          if (res.data.length === 0) {
+                            alert("login 실패");
+                            small_2.innerText =
+                              "ID와 PASSWORD를 다시 확인해주세요.";
+                            small_2.style.display = "block";
+                          } else {
+                            console.log(res.data[0]);
+                            sessionStorage.setItem("userID", res.data[0].id);
+                            navigate("/home");
+                          }
+                        })
+                        .catch((err) => {
+                          console.log(err);
+                        });
                     }
                   }
                 }}
