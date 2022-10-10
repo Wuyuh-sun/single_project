@@ -44,7 +44,14 @@
   font-size: 20px;
   padding: 20px;
   box-sizing: border-box;
+  background-color: #333333;
+  color: white;
+  border: none;
 }
+.formBox1 input:focus{
+  outline: none;
+}
+
 .formBox1 small:nth-child(2){
   position: absolute;
   top: 205px;

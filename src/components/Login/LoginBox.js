@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import style from "../../styles/Main/login.module.css";
+import style from "../../styles/Login/login.module.css";
 
-export default function Login() {
+export default function LoginBox() {
   const id = useRef();
   const password = useRef();
 
@@ -22,7 +22,7 @@ export default function Login() {
                 id="ID"
                 name="ID"
                 placeholder="ID를 입력하세요"
-                autoComplete="none"
+                autoComplete="off"
               />
               <small>ID를 입력하세요</small>
               <input

@@ -1,26 +1,20 @@
-import Background from "../components/Main/Background";
-import style from "../styles/Main/signup.module.css";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Background from "../components/SignUp/Background";
+import SignUpBox from "../components/SignUp/SignUpBox";
 
 export default function SignUp() {
+  let navigate = useNavigate();
+
+  useEffect(()=>{
+    if(sessionStorage.userID !== undefined){
+      navigate("/home");
+    } 
+  },[])
   return (
     <>
     <Background/>
-      <div className={style.wrap}>
-        <h1>SIGNUP</h1>
-        <form className={style.loginForm}>
-          <label htmlFor="ID">ID</label>
-          <input type="text" id="ID" name="ID" />
-          <label htmlFor="PASSWORD">PASSWORD</label>
-          <input type="password" id="PASSWORD" name="PASSWORD" />
-          <label htmlFor="NAME">NAME</label>
-          <input type="text" id="NAME" name="NAME" />
-          <label htmlFor="PHONENUMBER">PHONENUMBER</label>
-          <input type="text" id="PHONENUMBER" name="PHONENUMBER" />
-          <input type="submit" onClick={(e)=>{
-            e.preventDefault();
-          }}/>
-        </form>
-      </div>
+    <SignUpBox/>
     </>
   );
 }

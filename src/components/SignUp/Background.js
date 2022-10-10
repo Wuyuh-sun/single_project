@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import style from "../../styles/Main/background.module.css";
+import style from "../../styles/SignUp/background.module.css";
 
 export default function Background() {
   return (
