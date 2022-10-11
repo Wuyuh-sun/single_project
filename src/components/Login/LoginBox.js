@@ -75,6 +75,7 @@ export default function LoginBox() {
                               "ID와 PASSWORD를 다시 확인해주세요.";
                             small_2.style.display = "block";
                           } else {
+                            console.log(res.data);
                             sessionStorage.setItem("userID", res.data[0].ID);
                             navigate("/home");
                           }
