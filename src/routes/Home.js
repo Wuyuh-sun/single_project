@@ -1,22 +1,21 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Nav from "../components/Home/Nav";
 
-export default function Home(){
-  const loginValue = useSelector((state) => state.login.value);
+export default function Home() {
   let navigate = useNavigate();
-  
-  useEffect(()=>{
-    if(sessionStorage.userID !== undefined){
+
+  useEffect(() => {
+    if (sessionStorage.userID !== undefined) {
       navigate("/home");
-    } else{
+    } else {
       navigate("/");
     }
-  },[])
+  }, []);
 
-  return(
+  return (
     <>
-    <h1>Home</h1>
+      <Nav/>
     </>
-  )
+  );
 }

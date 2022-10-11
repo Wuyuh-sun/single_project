@@ -1,0 +1,78 @@
+.wrap{
+  width: 300px;
+  height: 550px;
+  background-color: white;
+  position: fixed;
+  z-index: 9999;
+  top: 20px;
+  left: 420px;
+  border-radius: 50px;
+  box-shadow: inset 0 0 5px 1px gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.contentBox1, .contentBox2{
+ width: 260px;
+ height: 230px;
+ /* border: 1px solid black; */
+ box-sizing: border-box;
+}
+.contentBox1{
+  border-bottom: 1px solid gray;
+}
+.contentBox1 div:nth-child(1){
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.contentBox1 div:nth-child(2){
+  color:#707070;
+  width: 100%;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.contentBox1 div:nth-child(3){
+  color:#707070;
+  width: 100%;
+  font-size: 20px;
+}
+.contentBox1 button{
+  background-color: #FF0066;
+  border: none;
+  border-radius: 35px;
+  width: 140px;
+  height: 70px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  margin-top: 30px;
+}
+.contentBox2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 50px 0 0 0;
+}
+.contentBox2 a{
+  margin-bottom: 20px;
+}
+.contentBox2 button{
+  width: 240px;
+  height: 60px;
+  border: none;
+  border-radius: 20px;
+  color: black;
+  font-weight: bold;
+  font-size: 17px;
+  box-shadow: 0 1px 1px 0px black;
+  cursor: pointer;
+}
