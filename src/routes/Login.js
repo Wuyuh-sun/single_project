@@ -8,7 +8,7 @@ export default function Login() {
 
   useEffect(()=>{
     if(sessionStorage.userID !== undefined){
-      navigate("/home");
+      navigate("/home/intro");
     } 
   },[])
   

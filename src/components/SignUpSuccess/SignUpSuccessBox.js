@@ -18,7 +18,7 @@ export default function SignUpSuccessBox() {
           <form action="">
             <input type="hidden" name="ID" value={signUpSessionID} />
             <input type="hidden" name="PASSWORD" value={signUpSessionPW} />
-            <Link to="/home">
+            <Link to="/home/intro">
               <button className={style.button} onClick={()=>{
                 sessionStorage.setItem("userID", signUpSessionID);
                 sessionStorage.removeItem("signUpUserID");

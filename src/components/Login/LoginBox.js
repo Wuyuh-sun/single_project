@@ -77,7 +77,7 @@ export default function LoginBox() {
                           } else {
                             console.log(res.data);
                             sessionStorage.setItem("userID", res.data[0].ID);
-                            navigate("/home");
+                            navigate("/home/intro");
                           }
                         })
                         .catch((err) => {

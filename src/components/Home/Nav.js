@@ -15,7 +15,7 @@ export default function Nav() {
     <>
       <div className={style.wrap}>
         <div className={style.header}>
-          <Link to="/home">
+          <Link to="/home/intro">
             <div className={style.logo} />
           </Link>
           <div
