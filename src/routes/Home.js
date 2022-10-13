@@ -10,7 +10,7 @@ export default function Home() {
     if (sessionStorage.userID === undefined) {
       navigate("/");
     } else {
-      // navigate("/home");
+      navigate("/home/intro");
     }
   }, []);
 
