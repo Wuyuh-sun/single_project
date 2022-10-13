@@ -43,27 +43,53 @@ export default function MyInfo() {
           <h1>MY INFO</h1>
           <div className={style.infoBox}>
             <label htmlFor="ID">ID</label>
-            <input type="text" name="ID" id="ID" autoComplete="off" value={userId}/>
+            <input
+              type="text"
+              name="ID"
+              id="ID"
+              autoComplete="off"
+              defaultValue={userId}
+              readOnly
+            />
             <label htmlFor="PASSWORD">PASSWORD</label>
             <input
               type="password"
               name="PASSWORD"
               id="PASSWORD"
               autoComplete="off"
-              value={userPw}
+              defaultValue={userPw}
+              onKeyUp = {(e)=>{
+                setUserPw(e.target.value)
+              }}
             />
             <label htmlFor="NAME">NAME</label>
-            <input type="text" name="NAME" id="NAME" autoComplete="off" 
-            value={userName}/>
+            <input
+              type="text"
+              name="NAME"
+              id="NAME"
+              autoComplete="off"
+              defaultValue={userName}
+              onKeyUp = {(e)=>{
+                setUserName(e.target.value)
+              }}
+            />
             <label htmlFor="PHONENUMBER">PHONE-NUMBER</label>
             <input
               type="text"
               name="PHONENUMBER"
               id="PHONENUMBER"
               autoComplete="off"
-              value={userPhNum}
+              defaultValue={userPhNum}
+              onKeyUp = {(e)=>{
+                setUserPhNum(e.target.value)
+              }}
             />
-            <button>확인</button>
+            <button onClick={()=>{
+              console.log(userId);
+              console.log(userPw);
+              console.log(userName);
+              console.log(userPhNum);
+            }}>확인</button>
           </div>
         </div>
       </div>
