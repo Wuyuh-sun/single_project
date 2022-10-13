@@ -62,7 +62,7 @@ export default function SettingBox() {
           </button>
         </div>
         <div className={style.contentBox2}>
-          <Link to="/home/userinfo">
+          <Link to="/home/myinfo">
             <button>계정 상세 정보</button>
           </Link>
           <Link to="/home/nowbook">

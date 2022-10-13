@@ -15,7 +15,7 @@ export default function Content() {
           <Route path="/nowbook" element={<NowBook />} />
           <Route path="/lastbook" element={<LastBook />} />
           <Route path="/roombook" element={<RoomBook />} />
-        </Routes>
+        </Routes> 
       </div>
     </>
   );
