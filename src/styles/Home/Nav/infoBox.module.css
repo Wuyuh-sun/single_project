@@ -1,0 +1,16 @@
+.wrap{
+  width: 100%;
+  height: 50px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  list-style: none;
+}
+.wrap a{
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 30px;
+}
+.wrap li{
+  padding: 20px;
+}

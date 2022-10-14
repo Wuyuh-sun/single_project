@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import style from "../../styles/Home/nav.module.css";
 import SearchBox from "./Nav/SearchBox";
 import SettingBox from "./Nav/SettingBox";
 import { settingStateFunc } from "../../store/modules/settingSlice";
+import InfoBox from "./Nav/InfoBox";
 
 export default function Nav() {
   const settingState = useSelector((state) => {
     return state.settingState.value;
   });
   const dispatch = useDispatch();
+  const location = useLocation();
 
   return (
     <>
@@ -29,7 +31,13 @@ export default function Nav() {
             }}
           />
         </div>
-        <SearchBox />
+        {location.pathname === "/home/intro" ? (
+          <SearchBox />
+        ) : location.pathname === "/home/roombook" ? (
+          <SearchBox />
+        ) : (
+          <InfoBox/>
+        )}
       </div>
       <SettingBox />
     </>

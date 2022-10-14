@@ -1,15 +1,17 @@
 import { useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import Content from "../components/Home/Content";
 import Nav from "../components/Home/Nav";
 
 export default function Home() {
   let navigate = useNavigate();
+  let location = useLocation();
 
   useEffect(() => {
     if (sessionStorage.userID === undefined) {
       navigate("/");
-    } else {
+    }
+    if (location.pathname === "/home" || location.pathname === "/home/") {
       navigate("/home/intro");
     }
   }, []);
