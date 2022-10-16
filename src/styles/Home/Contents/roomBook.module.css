@@ -1,0 +1,101 @@
+.wrap{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* padding: 0 50px 0 50px; */
+}
+.nowRoomPath{
+  position: relative;
+  top: 0;
+  left: 0;
+  /* padding: 20px 0px 0 50px; */
+  color: #555555;
+  font-size: 40px;
+  font-weight: bold;
+}
+.controller{
+  width: 100%;
+  height: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.calendarWrap{
+  /* width: 500px;
+  height: 500px;
+  border: 5px solid gray;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden; */
+}
+.timeSelectorWrap{
+  width: 400px;
+  height: 500px;
+  box-sizing: border-box;
+  border: 5px solid gray;
+  border-radius: 50px;
+  margin-left: 100px;
+  text-align: center;
+}
+.timeSelectTitle{
+  font-size: 30px;
+  font-weight: bold;
+  color: #555555;
+}
+.timeSelector{
+  list-style: none;
+
+}
+.timeSelector li{
+  background-color: #EEEEEE;
+  font-size: 30px;
+  font-weight: bold;
+  color: #555555;
+  padding: 14px 0 14px 0;
+  cursor: pointer;
+  border-bottom: 0.1px solid rgba(0,0,0,0.1);
+}
+.timeSelector li:hover{
+  background-color: #d4dfeb;
+}
+.buttonWrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7px;
+}
+.buttonWrap button{
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+.buttonWrap button:nth-child(1){
+  background-color: #3FA9F5;
+  margin-right: 30px;
+  
+}
+.buttonWrap button:nth-child(2){
+  background-color: #FF0066;
+}
+.bookUserName{
+  position: absolute;
+  top: calc(50% - 280px);
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-weight: bold;
+  font-size: 25px;
+  color: #555555;
+  border: 5px solid #555555;
+  border-radius: 20px;
+  padding: 10px;
+  display: none;
+}

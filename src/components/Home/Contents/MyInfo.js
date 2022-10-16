@@ -16,6 +16,8 @@ export default function MyInfo() {
   const [userName, setUserName] = useState();
   const [userPhNum, setUserPhNum] = useState();
 
+  const [defaultUserName, setDefaultUserName] = useState();
+
   const passwordLabel = useRef();
   const nameLabel = useRef();
 
@@ -40,11 +42,16 @@ export default function MyInfo() {
         setUserId(res.data[0].ID);
         setUserPw(res.data[0].PASSWORD);
         setUserName(res.data[0].NAME);
+        setDefaultUserName(res.data[0].NAME);
         setUserPhNum("0" + res.data[0].PHONENUM);
       })
       .catch((err) => {
         console.log(err);
       });
+    setUserPwCheck(true);
+    passwordLabel.current.innerText = "PASSWORD ⭕";
+    setUserNameCheck(true);
+    nameLabel.current.innerText = "NAME ⭕";
   }, []);
 
   return (
@@ -96,30 +103,35 @@ export default function MyInfo() {
               defaultValue={userName}
               onKeyUp={(e) => {
                 setUserName(e.currentTarget.value);
-                console.log(e.currentTarget.value);
+                // console.log(defaultUserName);
                 if (e.currentTarget.value === "") {
                   setUserNameCheck(false);
                   nameLabel.current.innerText = "NAME ❌";
                 } else {
-                  axios
-                    .get("http://localhost:4000/api/signup/nameCheck", {
-                      params: {
-                        nameCheck: e.currentTarget.value,
-                      },
-                    })
-                    .then((res) => {
-                      console.log(res.data[0]);
-                      if (res.data[0] === undefined) {
-                        setUserNameCheck(true);
-                        nameLabel.current.innerText = "NAME ⭕";
-                      } else {
-                        setUserNameCheck(false);
-                        nameLabel.current.innerText = "NAME ❌";
-                      }
-                    })
-                    .catch((err) => {
-                      console.log(err);
-                    });
+                  if (e.currentTarget.value === defaultUserName) {
+                    setUserNameCheck(true);
+                    nameLabel.current.innerText = "NAME ⭕";
+                  } else {
+                    axios
+                      .get("http://localhost:4000/api/signup/nameCheck", {
+                        params: {
+                          nameCheck: e.currentTarget.value,
+                        },
+                      })
+                      .then((res) => {
+                        console.log(res.data[0]);
+                        if (res.data[0] === undefined) {
+                          setUserNameCheck(true);
+                          nameLabel.current.innerText = "NAME ⭕";
+                        } else {
+                          setUserNameCheck(false);
+                          nameLabel.current.innerText = "NAME ❌";
+                        }
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
+                  }
                 }
               }}
             />
@@ -146,7 +158,8 @@ export default function MyInfo() {
                     })
                     .then((res) => {
                       console.log(res);
-                      navigate("/home/intro");
+                      alert("저장되었습니다.");
+                      window.location.reload();
                     })
                     .catch((err) => {
                       console.log(err);

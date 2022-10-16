@@ -5,6 +5,7 @@ import SearchBox from "./Nav/SearchBox";
 import SettingBox from "./Nav/SettingBox";
 import { settingStateFunc } from "../../store/modules/settingSlice";
 import InfoBox from "./Nav/InfoBox";
+import RoomList from "./Nav/RoomList";
 
 export default function Nav() {
   const settingState = useSelector((state) => {
@@ -32,11 +33,17 @@ export default function Nav() {
           />
         </div>
         {location.pathname === "/home/intro" ? (
-          <SearchBox />
+          <>
+            <SearchBox />
+            <RoomList />
+          </>
         ) : location.pathname === "/home/roombook" ? (
-          <SearchBox />
+          <>
+            <SearchBox />
+            <RoomList />
+          </>
         ) : (
-          <InfoBox/>
+          <InfoBox />
         )}
       </div>
       <SettingBox />

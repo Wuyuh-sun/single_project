@@ -12,7 +12,7 @@ export default function SettingBox() {
   const dispatch = useDispatch();
 
   const [userID, setUserID] = useState();
-  const [userPW, setUserPW] = useState();
+  const [userName, setUserName] = useState();
 
   let navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export default function SettingBox() {
       })
       .then((res) => {
         setUserID(res.data[0].ID);
-        setUserPW(res.data[0].PASSWORD);
+        setUserName(res.data[0].NAME);
       })
       .catch((err) => {
         console.log(err);
@@ -51,7 +51,7 @@ export default function SettingBox() {
         <div className={style.contentBox1}>
           <div>내 정보</div>
           <div>ID : {userID}</div>
-          <div>NAME : {userPW}</div>
+          <div>NAME : {userName}</div>
           <button
             onClick={() => {
               sessionStorage.removeItem("userID");

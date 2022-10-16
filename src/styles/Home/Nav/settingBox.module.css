@@ -54,6 +54,9 @@
   cursor: pointer;
   margin-top: 30px;
 }
+.contentBox1 button:hover{
+  filter: brightness(80%);
+}
 .contentBox2{
   display: flex;
   flex-direction: column;
@@ -75,4 +78,7 @@
   font-size: 17px;
   box-shadow: 0 1px 1px 0px black;
   cursor: pointer;
+}
+.contentBox2 button:hover{
+  background-color: rgb(230, 230, 230);
 }
