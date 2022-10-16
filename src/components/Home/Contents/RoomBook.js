@@ -63,16 +63,14 @@ export default function RoomBook() {
     selectTime.current.forEach((item, i) => {
       item.style = "";
       item.classList.remove("timeSelectorClicking");
+      selectTime.current[i].bookReservationUserName = undefined;
     });
     setSelectTimeText(undefined);
     setSelectTimeNode(undefined);
+    setBookUserName(undefined);
   }, [selectDay]);
 
   useEffect(() => {
-    // console.log(path);
-    // console.log(selectDay);
-    // console.log(selectTimeText);
-    // console.log(selectTimeNode);
   }, [path, selectDay, selectTimeText, selectTimeNode]);
 
   useEffect(() => {}, [selectDay]);
@@ -89,12 +87,9 @@ export default function RoomBook() {
         params: {
           PATH: path,
           DATE: selectDay,
-          // ID: sessionStorage.userID,
         },
       })
       .then((res) => {
-        // console.log(res.data);
-        // ;
         res.data.forEach((item, i) => {
           selectTime.current[item.TIMEIDX].style.backgroundColor = "#ebd4d4";
           selectTime.current[item.TIMEIDX].bookReservationUserName = item.USERNAME;
@@ -106,7 +101,7 @@ export default function RoomBook() {
   }, [path, selectDay]);
 
   useEffect(()=>{
-    console.log(bookUserName);
+    // console.log(bookUserName);
     if(bookUserName === undefined){
       bookUserNameRef.current.style.display = "none";
     } else{
