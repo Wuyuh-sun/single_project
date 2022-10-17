@@ -4,6 +4,10 @@
   height: 100%;
   position: fixed;
   z-index: 99999;
+  overflow: auto;
+}
+.wrap::-webkit-scrollbar{
+  display: none;
 }
 
 .header {

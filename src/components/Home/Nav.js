@@ -34,12 +34,12 @@ export default function Nav() {
         </div>
         {location.pathname === "/home/intro" ? (
           <>
-            <SearchBox />
+            {/* <SearchBox /> */}
             <RoomList />
           </>
         ) : location.pathname === "/home/roombook" ? (
           <>
-            <SearchBox />
+            {/* <SearchBox /> */}
             <RoomList />
           </>
         ) : (

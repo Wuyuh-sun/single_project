@@ -1,7 +1,63 @@
 .wrap{
   width: 100%;
-  height: 50px;
-  border: 1px solid black;
+  height: auto;
+  /* border: 1px solid black; */
   box-sizing: border-box;
   list-style: none;
+}
+.F_room{
+  width: 100%;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 20px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.F_room:hover{
+  background-color: #1c2f47;
+}
+.B_roomWrap{
+  width: 100%;
+  list-style: none;
+  height: auto;
+  transition: 1s;
+}
+.B_room{
+  width: 100%;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 20px 20px 20px 40px;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: #111c2b;
+  position: relative;
+}
+.B_room:hover{
+  background-color: #284466;
+}
+.R_roomWrap{
+  width: 100%;
+  list-style: none;
+  height: auto;
+  transition: 1s;
+}
+.R_room{
+  width: 100%;
+  color: #BBAE00;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 20px 20px 20px 60px;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: #091320;
+  position: relative;
+}
+.R_room:hover{
+  color: #dbcd00;
+  background-color: #284466;
+}
+a{
+  text-decoration: none;
 }

@@ -10,6 +10,10 @@ export default function RoomBook() {
   const settingState = useSelector((state) => {
     return state.settingState.value;
   });
+  const roomState = useSelector((state) => {
+    return state.roomState.value;
+  });
+
   const dispatch = useDispatch();
 
   const [userID, setUserID] = useState();
@@ -37,7 +41,13 @@ export default function RoomBook() {
   const [month, setMonth] = useState(1 + date.getMonth());
   const [day, setDay] = useState(date.getDate());
 
-  const [path, setPath] = useState("경일대학교/창의융합교육센터/스터디룸(1)");
+  console.log(roomState);
+
+  const [path, setPath] = useState();
+  useEffect(()=>{
+    setPath(`경일대학교/창의융합교육센터/${roomState}`);
+  },[roomState])
+
   const [selectDay, setSelectDay] = useState(year + "-" + month + "-" + day);
   const [selectTimeText, setSelectTimeText] = useState();
   const [selectTimeNode, setSelectTimeNode] = useState();
@@ -53,8 +63,6 @@ export default function RoomBook() {
     }
   }, []);
 
-  useEffect(() => {}, [path]);
-
   useEffect(() => {
     setSelectDay(year + "-" + month + "-" + day);
   }, [date]);
@@ -68,7 +76,7 @@ export default function RoomBook() {
     setSelectTimeText(undefined);
     setSelectTimeNode(undefined);
     setBookUserName(undefined);
-  }, [selectDay]);
+  }, [path, selectDay]);
 
   useEffect(() => {
   }, [path, selectDay, selectTimeText, selectTimeNode]);
