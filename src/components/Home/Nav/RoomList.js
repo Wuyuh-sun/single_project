@@ -7,10 +7,12 @@ import style from "../../../styles/Home/Nav/roomList.module.css";
 
 export default function RoomList() {
   const [FRoomData, setFRoomData] = useState();
-  const [BRoomData, setBRoomData] = useState();
-  const [RRoomData, setRRoomData] = useState();
-  const FRoomDataArr = useRef([]);
 
+  const [BRoomHandler, setBRoomHandler] = useState(false);
+  const [RRoomHandler, setRRoomHandler] = useState(false);
+
+  const BRoom = useRef();
+  const RRoom = useRef();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,15 +27,50 @@ export default function RoomList() {
       });
   }, []);
 
+  useEffect(() => {
+    if (!BRoomHandler) {
+      BRoom.current.style.height = "0";
+    } else {
+      BRoom.current.style.height = "auto";
+    }
+    if (!RRoomHandler) {
+      RRoom.current.style.height = "0";
+    } else {
+      RRoom.current.style.height = "auto";
+    }
+  }, [BRoomHandler, RRoomHandler]);
+
   return (
     <>
       <ul className={style.wrap}>
-        <li className={style.F_room}>경일대학교</li>
-        <ul className={style.B_roomWrap}>
+        <li
+          className={style.F_room}
+          onClick={(e) => {
+            if (!BRoomHandler) {
+              setBRoomHandler(true);
+            } else {
+              setBRoomHandler(false);
+            }
+          }}
+        >
+          경일대학교
+        </li>
+        <ul ref={BRoom} className={style.B_roomWrap}>
           <li className={style.B_room}>중앙도서관</li>
           <li className={style.B_room}>산학협력관</li>
-          <li className={style.B_room}>창의융합교육센터</li>
-          <ul className={style.R_roomWrap}>
+          <li
+            className={style.B_room}
+            onClick={(e) => {
+              if (!RRoomHandler) {
+                setRRoomHandler(true);
+              } else {
+                setRRoomHandler(false);
+              }
+            }}
+          >
+            창의융합교육센터
+          </li>
+          <ul ref={RRoom} className={style.R_roomWrap}>
             <Link to="/home/roombook">
               <li
                 className={style.R_room}
@@ -82,7 +119,7 @@ export default function RoomList() {
               <li
                 className={style.R_room}
                 onClick={() => {
-                  sessionStorage.setItem ("room", "캡스톤디자인실습실(2)");
+                  sessionStorage.setItem("room", "캡스톤디자인실습실(2)");
                   dispatch(roomStateFunc("캡스톤디자인실습실(2)"));
                 }}
               >

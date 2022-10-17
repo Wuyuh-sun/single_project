@@ -18,6 +18,7 @@ export default function RoomBook() {
 
   const [userID, setUserID] = useState();
   const [userName, setUserName] = useState();
+
   // User정보 가져오기
   useEffect(() => {
     axios
@@ -41,12 +42,12 @@ export default function RoomBook() {
   const [month, setMonth] = useState(1 + date.getMonth());
   const [day, setDay] = useState(date.getDate());
 
-  console.log(roomState);
+  // console.log(roomState);
 
   const [path, setPath] = useState();
-  useEffect(()=>{
+  useEffect(() => {
     setPath(`경일대학교/창의융합교육센터/${roomState}`);
-  },[roomState])
+  }, [roomState]);
 
   const [selectDay, setSelectDay] = useState(year + "-" + month + "-" + day);
   const [selectTimeText, setSelectTimeText] = useState();
@@ -78,8 +79,7 @@ export default function RoomBook() {
     setBookUserName(undefined);
   }, [path, selectDay]);
 
-  useEffect(() => {
-  }, [path, selectDay, selectTimeText, selectTimeNode]);
+  useEffect(() => {}, [path, selectDay, selectTimeText, selectTimeNode]);
 
   useEffect(() => {}, [selectDay]);
 
@@ -100,7 +100,8 @@ export default function RoomBook() {
       .then((res) => {
         res.data.forEach((item, i) => {
           selectTime.current[item.TIMEIDX].style.backgroundColor = "#ebd4d4";
-          selectTime.current[item.TIMEIDX].bookReservationUserName = item.USERNAME;
+          selectTime.current[item.TIMEIDX].bookReservationUserName =
+            item.USERNAME;
         });
       })
       .catch((err) => {
@@ -108,19 +109,42 @@ export default function RoomBook() {
       });
   }, [path, selectDay]);
 
-  useEffect(()=>{
+  useEffect(() => {
     // console.log(bookUserName);
-    if(bookUserName === undefined){
+    if (bookUserName === undefined) {
       bookUserNameRef.current.style.display = "none";
-    } else{
+    } else {
       bookUserNameRef.current.style.display = "block";
     }
-  },[bookUserName])
+  }, [bookUserName]);
+
+  const [userBookState, setUserBookState] = useState();
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/logingUserNowBook", {
+        params: {
+          reqID: sessionStorage.userID,
+        },
+      })
+      .then((res) => {
+        // console.log(res.data);
+        if (res.data.length === 0) {
+          setUserBookState(true);
+        } else {
+          setUserBookState(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <div className={style.wrap}>
         <div className={style.nowRoomPath}>{path}</div>
-        <div ref={bookUserNameRef} className={style.bookUserName}>예약자 - {bookUserName}</div>
+        <div ref={bookUserNameRef} className={style.bookUserName}>
+          예약자 - {bookUserName}
+        </div>
         <div className={style.controller}>
           <div className={style.calendarWrap}>
             <Calendar
@@ -144,12 +168,15 @@ export default function RoomBook() {
                     selectTime.current[0].textContent.replace(/(\s*)/g, "")
                   );
                   setSelectTimeNode(0);
-                  if(selectTime.current[0].bookReservationUserName === undefined){
+                  if (
+                    selectTime.current[0].bookReservationUserName === undefined
+                  ) {
                     setBookUserName(undefined);
-                  } else{
-                    setBookUserName(selectTime.current[0].bookReservationUserName);
+                  } else {
+                    setBookUserName(
+                      selectTime.current[0].bookReservationUserName
+                    );
                   }
-                  
                 }}
               >
                 9 : 00 ~ 11 : 00
@@ -165,12 +192,15 @@ export default function RoomBook() {
                     selectTime.current[1].textContent.replace(/(\s*)/g, "")
                   );
                   setSelectTimeNode(1);
-                  if(selectTime.current[1].bookReservationUserName === undefined){
+                  if (
+                    selectTime.current[1].bookReservationUserName === undefined
+                  ) {
                     setBookUserName(undefined);
-                  } else{
-                    setBookUserName(selectTime.current[1].bookReservationUserName);
+                  } else {
+                    setBookUserName(
+                      selectTime.current[1].bookReservationUserName
+                    );
                   }
-                  
                 }}
               >
                 11 : 00 ~ 12 : 00
@@ -186,12 +216,15 @@ export default function RoomBook() {
                     selectTime.current[2].textContent.replace(/(\s*)/g, "")
                   );
                   setSelectTimeNode(2);
-                  if(selectTime.current[2].bookReservationUserName === undefined){
+                  if (
+                    selectTime.current[2].bookReservationUserName === undefined
+                  ) {
                     setBookUserName(undefined);
-                  } else{
-                    setBookUserName(selectTime.current[2].bookReservationUserName);
+                  } else {
+                    setBookUserName(
+                      selectTime.current[2].bookReservationUserName
+                    );
                   }
-                  
                 }}
               >
                 12 : 00 ~ 13 : 00
@@ -207,12 +240,15 @@ export default function RoomBook() {
                     selectTime.current[3].textContent.replace(/(\s*)/g, "")
                   );
                   setSelectTimeNode(3);
-                  if(selectTime.current[3].bookReservationUserName === undefined){
+                  if (
+                    selectTime.current[3].bookReservationUserName === undefined
+                  ) {
                     setBookUserName(undefined);
-                  } else{
-                    setBookUserName(selectTime.current[3].bookReservationUserName);
+                  } else {
+                    setBookUserName(
+                      selectTime.current[3].bookReservationUserName
+                    );
                   }
-                  
                 }}
               >
                 13 : 00 ~ 15 : 00
@@ -228,12 +264,15 @@ export default function RoomBook() {
                     selectTime.current[4].textContent.replace(/(\s*)/g, "")
                   );
                   setSelectTimeNode(4);
-                  if(selectTime.current[4].bookReservationUserName === undefined){
+                  if (
+                    selectTime.current[4].bookReservationUserName === undefined
+                  ) {
                     setBookUserName(undefined);
-                  } else{
-                    setBookUserName(selectTime.current[4].bookReservationUserName);
+                  } else {
+                    setBookUserName(
+                      selectTime.current[4].bookReservationUserName
+                    );
                   }
-                  
                 }}
               >
                 15 : 00 ~ 17 : 00
@@ -249,12 +288,15 @@ export default function RoomBook() {
                     selectTime.current[5].textContent.replace(/(\s*)/g, "")
                   );
                   setSelectTimeNode(5);
-                  if(selectTime.current[5].bookReservationUserName === undefined){
+                  if (
+                    selectTime.current[5].bookReservationUserName === undefined
+                  ) {
                     setBookUserName(undefined);
-                  } else{
-                    setBookUserName(selectTime.current[5].bookReservationUserName);
+                  } else {
+                    setBookUserName(
+                      selectTime.current[5].bookReservationUserName
+                    );
                   }
-                  
                 }}
               >
                 17 : 00 ~ 18 : 00
@@ -267,31 +309,56 @@ export default function RoomBook() {
                     selectTimeText !== undefined &&
                     selectTimeNode !== undefined
                   ) {
-                    axios
-                      .get("http://localhost:4000/api/roombookexecution", {
-                        params: {
-                          BOOK: path + " " + selectDay + " " + selectTimeText,
-                          PATH: path,
-                          DATE: selectDay,
-                          TIME: selectTimeText,
-                          TIMEIDX: selectTimeNode,
-                          ID: userID,
-                          USERNAME: userName,
-                        },
-                      })
-                      .then((res) => {
-                        console.log(res);
-                        if (res.data.code === "ER_DUP_ENTRY") {
-                          alert("이미 예약이 완료된 시간입니다.");
-                          // window.location.reload();
-                        } else {
-                          alert("예약되었습니다.");
-                          window.location.reload();
-                        }
-                      })
-                      .catch((err) => {
-                        console.log(err);
-                      });
+                    if (userBookState === false) {
+                      if (
+                        window.confirm(
+                          "사용자당 한 건의 예약만 가능합니다. 이전 예약을 취소하시겠습니까?"
+                        ) === true
+                      ) {
+                        axios
+                          .get("http://localhost:4000/api/userroombookcancel", {
+                            params: {
+                              ID: userID,
+                            },
+                          })
+                          .then((res) => {
+                            // console.log(res);
+                            alert("이전 예약이 취소되었습니다.");
+                            window.location.reload();
+                          })
+                          .catch((err) => {
+                            console.log(err);
+                          });
+                      } else {
+                        return false;
+                      }
+                    } else {
+                      axios
+                        .get("http://localhost:4000/api/roombookexecution", {
+                          params: {
+                            BOOK: path + " " + selectDay + " " + selectTimeText,
+                            PATH: path,
+                            DATE: selectDay,
+                            TIME: selectTimeText,
+                            TIMEIDX: selectTimeNode,
+                            ID: userID,
+                            USERNAME: userName,
+                          },
+                        })
+                        .then((res) => {
+                          // console.log(res);
+                          if (res.data.code === "ER_DUP_ENTRY") {
+                            alert("이미 예약이 완료된 시간입니다.");
+                            // window.location.reload();
+                          } else {
+                            alert("예약되었습니다.");
+                            window.location.reload();
+                          }
+                        })
+                        .catch((err) => {
+                          console.log(err);
+                        });
+                    }
                   } else {
                     alert("시간을 선택하고 예약해주세요");
                   }
@@ -299,37 +366,41 @@ export default function RoomBook() {
               >
                 예약하기
               </button>
-              <button onClick={()=>{
-                if (
-                  selectTimeText !== undefined &&
-                  selectTimeNode !== undefined
-                ) {
-                  axios
-                    .get("http://localhost:4000/api/roombookcancel", {
-                      params: {
-                        PATH: path,
-                        DATE: selectDay,
-                        TIMEIDX: selectTimeNode,
-                        ID: userID
-                      },
-                    })
-                    .then((res) => {
-                      console.log(res);
-                      if (res.data.AFFECTEDROWS === 0) {
-                        alert("본인이 예약한 시간만 취소할 수 있습니다.");
-                        // window.location.reload();
-                      } else {
-                        alert("취소되었습니다.");
-                        window.location.reload();
-                      }
-                    })
-                    .catch((err) => {
-                      console.log(err);
-                    });
-                } else {
-                  alert("시간을 선택하고 취소해주세요");
-                }
-              }}>예약취소</button>
+              <button
+                onClick={() => {
+                  if (
+                    selectTimeText !== undefined &&
+                    selectTimeNode !== undefined
+                  ) {
+                    axios
+                      .get("http://localhost:4000/api/roombookcancel", {
+                        params: {
+                          PATH: path,
+                          DATE: selectDay,
+                          TIMEIDX: selectTimeNode,
+                          ID: userID,
+                        },
+                      })
+                      .then((res) => {
+                        console.log(res);
+                        if (res.data.AFFECTEDROWS === 0) {
+                          alert("본인이 예약한 시간만 취소할 수 있습니다.");
+                          // window.location.reload();
+                        } else {
+                          alert("취소되었습니다.");
+                          window.location.reload();
+                        }
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
+                  } else {
+                    alert("시간을 선택하고 취소해주세요");
+                  }
+                }}
+              >
+                예약취소
+              </button>
             </div>
           </div>
         </div>

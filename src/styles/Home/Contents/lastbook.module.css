@@ -23,48 +23,33 @@
   font-size: 40px;
   margin-bottom: 15px;
 }
-.infoBox {
+.lastBookBox {
   width: 400px;
   height: 400px;
-  background-color: #3A5098;
+  background-color: white;
   border-radius: 50px;
   align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
-.infoBox label{
-  color: white;
-  font-weight: bold;
-  font-size: 30px;
-  position: relative;
-  left: -150px;
-  transform: translateX(50%);
-  text-align: start;
-  margin: 10px 0 5px 0;
-}
-.infoBox input{
-  width: 300px;
-  height: 30px;
-  box-sizing: border-box;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  font-weight: bold;
-  font-size: 15px;
-}
-.infoBox input:focus{
-  outline: none;
-}
-.infoBox button{
-  width: 150px;
-  height: 40px;
-  background-color: #142D81;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border: none;
-  margin-top: 12px;
-  border-radius: 15px;
+.lastBookWrap:hover{
+  background-color: rgb(230, 230, 230);
   cursor: pointer;
+}
+.path, .dateTime{
+  font-size: 18px;
+  font-weight: bold;
+  text-align: start;
+}
+.path{
+  padding-top: 10px;
+}
+.dateTime{
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+a{
+  color: black;
 }

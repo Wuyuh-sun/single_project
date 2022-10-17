@@ -1,8 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "../../../styles/Home/Contents/intro.module.css";
 import { settingStateFunc } from "../../../store/modules/settingSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { roomStateFunc } from "../../../store/modules/roomSlice";
+import axios from "axios";
 
 export default function Intro() {
   const settingState = useSelector((state) => {
@@ -18,6 +20,24 @@ export default function Intro() {
 
   const wrap = useRef();
 
+  const [lastBookData, setLastBookData] = useState();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/userlastbookread3", {
+        params: {
+          ID: sessionStorage.userID,
+        },
+      })
+      .then((res) => {
+        // console.log(res.data);
+        setLastBookData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
       <div ref={wrap} className={style.wrap}>
@@ -30,7 +50,35 @@ export default function Intro() {
           <div className={style.recentBox}>
             <h2>Recently</h2>
             <ul>
-              <Link to="#">
+              {lastBookData !== undefined
+                ? lastBookData.map((item, i) => {
+                    // console.log(item);
+                    return (
+                      <Link key={i} to="/home/roombook">
+                        <li
+                          className={style.lastBookWrap}
+                          onClick={() => {
+                            sessionStorage.setItem(
+                              "room",
+                              `${item.PATH.split("/")[2]}`
+                            );
+                            dispatch(
+                              roomStateFunc(`${item.PATH.split("/")[2]}`)
+                            );
+                          }}
+                        >
+                          <div className={style.path}>
+                            {i + 1}. {item.PATH}
+                          </div>
+                          <div className={style.dateTime}>
+                            {item.DATE} / {item.TIME}
+                          </div>
+                        </li>
+                      </Link>
+                    );
+                  })
+                : false}
+              {/* <Link to="#">
                 <li>1. 경일대학교/창의융합교육센터/스터디룸(1)</li>
               </Link>
               <Link to="#">
@@ -38,7 +86,7 @@ export default function Intro() {
               </Link>
               <Link to="#">
                 <li>3. 경일대학교/창의융합교육센터/스터디룸(3)</li>
-              </Link>
+              </Link> */}
             </ul>
           </div>
         </div>

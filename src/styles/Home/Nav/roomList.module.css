@@ -1,11 +1,12 @@
-.wrap{
+.wrap {
   width: 100%;
   height: auto;
   /* border: 1px solid black; */
   box-sizing: border-box;
   list-style: none;
 }
-.F_room{
+
+.F_room {
   width: 100%;
   color: white;
   font-size: 30px;
@@ -14,16 +15,20 @@
   cursor: pointer;
   box-sizing: border-box;
 }
-.F_room:hover{
+
+.F_room:hover {
   background-color: #1c2f47;
 }
-.B_roomWrap{
+
+.B_roomWrap {
   width: 100%;
   list-style: none;
-  height: auto;
+  /* height: auto; */
   transition: 1s;
+  overflow: hidden;
 }
-.B_room{
+
+.B_room {
   width: 100%;
   color: white;
   font-size: 30px;
@@ -33,17 +38,23 @@
   box-sizing: border-box;
   background-color: #111c2b;
   position: relative;
+  overflow: hidden;
 }
-.B_room:hover{
+
+.B_room:hover {
   background-color: #284466;
 }
-.R_roomWrap{
+
+.R_roomWrap {
   width: 100%;
   list-style: none;
-  height: auto;
+  /* height: auto; */
   transition: 1s;
+  position: relative;
+  overflow: hidden;
 }
-.R_room{
+
+.R_room {
   width: 100%;
   color: #BBAE00;
   font-size: 30px;
@@ -53,11 +64,14 @@
   box-sizing: border-box;
   background-color: #091320;
   position: relative;
+  overflow: hidden;
 }
-.R_room:hover{
+
+.R_room:hover {
   color: #dbcd00;
   background-color: #284466;
 }
-a{
+
+a {
   text-decoration: none;
 }

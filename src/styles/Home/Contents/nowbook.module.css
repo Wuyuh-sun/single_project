@@ -23,7 +23,7 @@
   font-size: 40px;
   margin-bottom: 15px;
 }
-.infoBox {
+.nowBookBox {
   width: 400px;
   height: 400px;
   background-color: #3A5098;
@@ -33,7 +33,7 @@
   display: flex;
   flex-direction: column;
 }
-.infoBox label{
+.nowBookBox label{
   color: white;
   font-weight: bold;
   font-size: 30px;
@@ -43,7 +43,7 @@
   text-align: start;
   margin: 10px 0 5px 0;
 }
-.infoBox input{
+.nowBookBox input{
   width: 300px;
   height: 30px;
   box-sizing: border-box;
@@ -53,10 +53,10 @@
   font-weight: bold;
   font-size: 15px;
 }
-.infoBox input:focus{
+.nowBookBox input:focus{
   outline: none;
 }
-.infoBox button{
+.nowBookBox button{
   width: 150px;
   height: 40px;
   background-color: #142D81;
