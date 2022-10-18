@@ -52,7 +52,27 @@ export default function NowBook() {
             <input type="text" id="ROOM" name="ROOM" defaultValue={room} readOnly/>
             <label htmlFor="TIME">DATE / TIME</label>
             <input type="text" id="TIME" name="TIME" defaultValue={dateTime} readOnly/>
-            <button>취소</button>
+            <button onClick={()=>{
+              axios
+              .get("http://localhost:4000/api/userroombookcancel", {
+                params: {
+                  ID: sessionStorage.userID,
+                },
+              })
+              .then((res) => {
+                console.log(res);
+                if (res.data.AFFECTEDROWS === 0) {
+                  alert("본인이 예약한 시간만 취소할 수 있습니다.");
+                  // window.location.reload();
+                } else {
+                  alert("취소되었습니다.");
+                  window.location.reload();
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+            }}>취소</button>
           </div>
         </div>
       </div>
