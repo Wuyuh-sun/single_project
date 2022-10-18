@@ -17,6 +17,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: white;
 }
 .wrapCenter h1{
   margin-bottom: 30px;
